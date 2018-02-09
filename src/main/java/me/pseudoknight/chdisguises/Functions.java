@@ -5,6 +5,7 @@ import com.laytonsmith.abstraction.MCEntity;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.Static;
+import com.laytonsmith.core.constructs.CNull;
 import com.laytonsmith.core.constructs.CVoid;
 import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
@@ -44,6 +45,10 @@ public class Functions {
 
 		public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
 			MCEntity entity = Static.getEntity(args[0], t);
+			if(args[1] instanceof CNull) {
+				 DisguiseAPI.undisguiseToAll((Entity) entity.getHandle());
+				return CVoid.VOID;
+			}
 			DisguiseType type = DisguiseType.getType(EntityType.valueOf(args[1].val()));
 			TargetedDisguise disguise;
 			if(type.isMob()) {
