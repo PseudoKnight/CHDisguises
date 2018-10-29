@@ -73,7 +73,8 @@ public class Functions {
 		}
 
 		public String docs() {
-			return "void {entity, disguise, [data]} Disguises an entity as the specified disguise.";
+			return "void {entityUUID, disguiseType, [data]} Disguises an entity as the specified disguise."
+					+ " If disguiseType is \"PLAYER\", data can be the player name.";
 		}
 
 		public Version since() {
