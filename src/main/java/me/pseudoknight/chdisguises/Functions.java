@@ -14,14 +14,6 @@ import com.laytonsmith.core.exceptions.CRE.CREThrowable;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.natives.interfaces.Mixed;
-import me.libraryaddict.disguise.DisguiseAPI;
-import me.libraryaddict.disguise.disguisetypes.DisguiseType;
-import me.libraryaddict.disguise.disguisetypes.MiscDisguise;
-import me.libraryaddict.disguise.disguisetypes.MobDisguise;
-import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
-import me.libraryaddict.disguise.disguisetypes.TargetedDisguise;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 
 public class Functions {
 	public static String docs() {
@@ -46,21 +38,14 @@ public class Functions {
 		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
 			MCEntity entity = Static.getEntity(args[0], t);
 			if(args[1] instanceof CNull) {
-				 DisguiseAPI.undisguiseToAll((Entity) entity.getHandle());
-				return CVoid.VOID;
-			}
-			DisguiseType type = DisguiseType.getType(EntityType.valueOf(args[1].val()));
-			TargetedDisguise disguise;
-			if(type.isMob()) {
-				disguise = new MobDisguise(type);
-			} else if(type.isPlayer()) {
-				disguise = new PlayerDisguise(args[2].val());
-			} else if(type.isMisc()) {
-				disguise = new MiscDisguise(type);
+				DisguiseUtil.Undisguise(entity);
 			} else {
-				return CVoid.VOID;
+				String data = null;
+				if(args.length == 3) {
+					data = args[2].val();
+				}
+				DisguiseUtil.Disguise(entity, args[1].val(), data, t);
 			}
-			DisguiseAPI.disguiseToAll((Entity) entity.getHandle(), disguise);
 			return CVoid.VOID;
 		}
 
