@@ -2,9 +2,9 @@
 
 ## Known Compatibility
 <ul>
-  <li>LibsDisguises 9.4.0 - 9.6.0</li>
-  <li>CommandHelper 3.3.2 - 3.3.4</li>
-  <li>Spigot 1.9.4 - 1.13.2</li>
+  <li>LibsDisguises 9.6.0</li>
+  <li>CommandHelper 3.3.4</li>
+  <li>Spigot 1.13.2</li>
 </ul>
 
 **void disguise_entity(entityUUID, disguiseType, [data])**
