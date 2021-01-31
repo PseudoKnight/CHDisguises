@@ -1,6 +1,6 @@
 # CHDisguises
 
-## Known Compatibility
+## Required plugin dependancies
 <ul>
   <li>LibsDisguises 9.6.0</li>
   <li>CommandHelper 3.3.4</li>
