@@ -2,8 +2,11 @@ package me.pseudoknight.chdisguises;
 
 import com.laytonsmith.PureUtilities.SimpleVersion;
 import com.laytonsmith.PureUtilities.Version;
+import com.laytonsmith.core.Static;
 import com.laytonsmith.core.extensions.AbstractExtension;
 import com.laytonsmith.core.extensions.MSExtension;
+
+import java.util.logging.Level;
 
 @MSExtension("CHDisguises")
 public class Extension extends AbstractExtension {
@@ -14,12 +17,12 @@ public class Extension extends AbstractExtension {
 
 	@Override
 	public void onStartup() {
-		System.out.println("CHDisguises " + getVersion() + " loaded.");
+		Static.getLogger().log(Level.INFO, "CHDisguises " + getVersion() + " loaded.");
 	}
 
 	@Override
 	public void onShutdown() {
-		System.out.println("CHDisguises " + getVersion() + " unloaded.");
+		Static.getLogger().log(Level.INFO, "CHDisguises " + getVersion() + " unloaded.");
 	}
 
 }
